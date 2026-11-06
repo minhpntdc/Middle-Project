@@ -1,0 +1,4 @@
+Mô hình,Kích thước Grid,Số chiều (D),Phương sai PCA 3PC (%),Cosine TB Cánh tay (A),Cosine TB Nền (B),Hạng hiệu dụng RankMe
+VAE,32x32,4,89.19%,0.1267,0.0959,3.76
+ViT,14x14,768,32.27%,0.6370,0.5936,134.33
+V-JEPA 2,16x16,1024,31.83%,0.4611,0.3331,178.29

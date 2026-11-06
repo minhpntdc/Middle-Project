@@ -1,0 +1,4 @@
+Model,Grid,Latent_Dim_D,PCA_3PC_Variance_Pct,Mean_Cosine_Subject_A,Mean_Cosine_Background_B,Effective_Rank_RankMe
+VAE,32x32,4,89.19,0.1267,0.0959,3.76
+ViT,14x14,768,32.25,0.6363,0.5944,134.24
+V-JEPA 2,16x16,1024,29.98,0.4898,0.497,177.26

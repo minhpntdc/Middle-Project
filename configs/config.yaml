@@ -1,0 +1,51 @@
+# ==============================================================================
+# Configuration: World Model Representation Comparison (VAE vs ViT vs V-JEPA 2)
+# Verified on Baxter Collaborative Robot Dataset (Wikimedia Commons)
+# Synchronized with Phung_Nhat_Minh_BT_GK.ipynb
+# ==============================================================================
+
+experiment:
+  name: "Baxter Robot Representation Comparison"
+  description: "Benchmarking pixel-level VAE, supervised ViT, and self-supervised V-JEPA 2 for World Models in Embodied AI."
+  reference_notebook: "notebooks/Phung_Nhat_Minh_BT_GK.ipynb"
+
+models:
+  vae:
+    name: "VAE"
+    checkpoint: "stabilityai/sd-vae-ft-mse"
+    expected_grid: [32, 32]
+    latent_dim: 4
+    input_type: "image"
+  vit:
+    name: "ViT"
+    checkpoint: "google/vit-base-patch16-224"
+    expected_grid: [14, 14]
+    latent_dim: 768
+    input_type: "image"
+  vjepa:
+    name: "V-JEPA 2"
+    checkpoint: "facebook/vjepa2-vitl-fpc64-256"
+    expected_grid: [16, 16]
+    latent_dim: 1024
+    tubelet_size: 2
+    input_type: "video"
+
+data:
+  image_raw_path: "data/raw/sample_image.jpg"
+  video_raw_path: "data/raw/sample_video.mp4"
+  target_size: [256, 256]
+  num_frames: 4  # Uniformly sampled across manipulation duration for temporal pooling
+
+analysis:
+  normalize_before_pca: true
+  pca_components: 3
+  queries:
+    A_subject: [0.55, 0.50]       # Điểm A: Khớp cổ tay / bộ gắp robot Baxter (Active Dynamics)
+    B_background: [0.10, 0.12]    # Điểm B: Phông nền phòng thí nghiệm tĩnh (Invariant Context)
+
+hardware:
+  device: "auto"     # "auto", "cuda", "cpu"
+  use_fp16: true
+
+output:
+  root_dir: "outputs"
